@@ -86,6 +86,7 @@ function loadImgs(position, offset) {
     for (var i = position; i <= offset; i++) {
 
         var img = $("#template").clone();
+        console.log(i);
         img.attr('src', "fotos/foto_" + i + ".jpg");
         img.attr('height', "235px"); //TODO: PASAR ESTA LINEA A CADA PAGINA
         img.attr('index', i);
@@ -161,27 +162,24 @@ function sendQuestion(sendOptionFlag) {
 // Footer
 
 $(function(){
-    $("#includedFooterContent").load("layout/footer-floatbtns.html", function() {
-        // ICONS
-
-        // Remove entrance cool Effect
-        var element =  document.querySelector('.float.fb');
-        element.addEventListener('animationend', function() {
-            element.classList.remove('animated', 'zoomInUp');
-        });
-        var meliAnimated =  document.querySelector('.float.meli');
-        meliAnimated.addEventListener('animationend', function() {
-            meliAnimated.classList.remove('animated', 'zoomInUp');
-        });
-    });
+    $("#includedFooterContent").load("layout/footer-floatbtns.html");
 
 });
 
 // replace href with #123 if present
 $(document).ready(function () {
 
+    if (window.location.href.includes("#123")) {
+        var allHref = $("a[href^='https://tuentrepiso.github.io']");
+        allHref.each(function () {
+            var anHref = $( this ).get(0);
+                anHref.href = anHref.href + "#123"
+            }
+        );
+    }
+
     // Replace source
     $('img').on("error", function() {
-        $(this).attr('src', 'fotos/foto_1.jpg');
+   //     $(this).attr('src', 'fotos/no_image.jpg');
     });
 });

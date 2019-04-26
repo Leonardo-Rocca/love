@@ -45,7 +45,7 @@ function left() {
     var index = parseInt(element.attr('index'), 10);
     index = index - 1;
     if (index < 1) index = MAX_ELEMENTS;
-    element.attr('src', "fotos/Entrepiso_" + index + ".jpg");
+    element.attr('src', "fotos/foto_" + index + ".jpg");
     element.attr('index', index);
 }
 
@@ -55,7 +55,7 @@ function right() {
     var index = parseInt(element.attr('index'), 10);
     if (index >= MAX_ELEMENTS) index = 0;
     index = index + 1;
-    element.attr('src', "fotos/Entrepiso_" + index + ".jpg");
+    element.attr('src', "fotos/foto_" + index + ".jpg");
     element.attr('index', index);
 }
 
@@ -180,17 +180,8 @@ $(function(){
 // replace href with #123 if present
 $(document).ready(function () {
 
-    if (window.location.href.includes("#123")) {
-        var allHref = $("a[href^='https://tuentrepiso.github.io']");
-        allHref.each(function () {
-            var anHref = $( this ).get(0);
-                anHref.href = anHref.href + "#123"
-            }
-        );
-    }
-
     // Replace source
     $('img').on("error", function() {
-   //     $(this).attr('src', 'fotos/no_image.jpg');
+        $(this).attr('src', 'fotos/foto_1.jpg');
     });
 });
